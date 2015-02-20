@@ -350,7 +350,7 @@
                             <tokenField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Od-mT-MOr">
                                 <rect key="frame" x="20" y="358" width="440" height="22"/>
                                 <tokenFieldCell key="cell" selectable="YES" editable="YES" borderStyle="bezel" focusRingType="none" alignment="left" placeholderString="To" drawsBackground="YES" allowsEditingTextAttributes="YES" id="eiQ-ys-eIB">
-                                    <font key="font" metaFont="cellTitle"/>
+                                    <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </tokenFieldCell>

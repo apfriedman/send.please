@@ -94,6 +94,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    dispatch_async(dispatch_get_current_queue(), ^{
+        [self.toField becomeFirstResponder];
+        [self.bodyTextView setFont:[NSFont systemFontOfSize:13]];
+        [self previewLinkForCurrentValues];
+    });
 }
 
 - (void)setRepresentedObject:(id)representedObject {

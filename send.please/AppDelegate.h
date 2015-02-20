@@ -10,6 +10,7 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
+- (IBAction)helpItemSelected:(id)sender;
 
 @end
 

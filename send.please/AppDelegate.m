@@ -22,4 +22,8 @@
     // Insert code here to tear down your application
 }
 
+- (IBAction)helpItemSelected:(id)sender {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/apfriedman/send.please/wiki"]];
+}
+
 @end

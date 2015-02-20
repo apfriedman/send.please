@@ -80,6 +80,7 @@
 
 - (IBAction)linkTypeMatrixAction:(id)sender {
     [self previewLinkForCurrentValues];
+    [[NSUserDefaults standardUserDefaults] setInteger:_linkTypeControl.selectedRow forKey:@"linkType"];
 }
 
 - (void)controlTextDidChange:(NSNotification *)notification {
@@ -97,6 +98,7 @@
     dispatch_async(dispatch_get_current_queue(), ^{
         [self.toField becomeFirstResponder];
         [self.bodyTextView setFont:[NSFont systemFontOfSize:13]];
+        [_linkTypeControl selectCellAtRow:[[NSUserDefaults standardUserDefaults] integerForKey:@"linkType"] column:0];
         [self previewLinkForCurrentValues];
     });
 }

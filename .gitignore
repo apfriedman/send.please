@@ -1,4 +1,6 @@
+InfoPlist.h
 xcuserdata
 *.xcworkspacedata
 *.xccheckout
 *.xcuserstate
+send.please.xcodeproj/xcuserdata/*

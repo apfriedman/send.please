@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		F40F2AC71A9829920037C30B /* GenGitVersion */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = F40F2AC81A9829920037C30B /* Build configuration list for PBXAggregateTarget "GenGitVersion" */;
+			buildPhases = (
+				F40F2ACB1A9829B20037C30B /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = GenGitVersion;
+			productName = GetGitVersion;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		F48855051A958ACA002C66FE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F48855041A958ACA002C66FE /* AppDelegate.m */; };
 		F48855071A958ACA002C66FE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F48855061A958ACA002C66FE /* main.m */; };
@@ -17,6 +31,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		F40F2ACC1A982B120037C30B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F48854F61A958ACA002C66FE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F40F2AC71A9829920037C30B;
+			remoteInfo = GenGitVersion;
+		};
 		F48855151A958ACB002C66FE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F48854F61A958ACA002C66FE /* Project object */;
@@ -135,6 +156,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				F40F2ACD1A982B120037C30B /* PBXTargetDependency */,
 			);
 			name = send.please;
 			productName = send.please;
@@ -168,6 +190,9 @@
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Aaron Friedman";
 				TargetAttributes = {
+					F40F2AC71A9829920037C30B = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
 					F48854FD1A958ACA002C66FE = {
 						CreatedOnToolsVersion = 6.1.1;
 					};
@@ -192,6 +217,7 @@
 			targets = (
 				F48854FD1A958ACA002C66FE /* send.please */,
 				F48855131A958ACB002C66FE /* send.pleaseTests */,
+				F40F2AC71A9829920037C30B /* GenGitVersion */,
 			);
 		};
 /* End PBXProject section */
@@ -214,6 +240,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F40F2ACB1A9829B20037C30B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "git=/Applications/Xcode.app/Contents/Developer/usr/bin/git\nversion=`$git describe | sed -e 's/^v//' -e 's/g//' -e 's/-.*//'`\nbuild=`$git log --oneline | wc -l | sed 's/^ *//g'`\n\necho \"#define GIT_VERSION $version\n#define GIT_BUILD $build\" > InfoPlist.h\ntouch send.please/Info.plist";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F48854FA1A958ACA002C66FE /* Sources */ = {
@@ -238,6 +280,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		F40F2ACD1A982B120037C30B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F40F2AC71A9829920037C30B /* GenGitVersion */;
+			targetProxy = F40F2ACC1A982B120037C30B /* PBXContainerItemProxy */;
+		};
 		F48855161A958ACB002C66FE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F48854FD1A958ACA002C66FE /* send.please */;
@@ -257,6 +304,20 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		F40F2AC91A9829920037C30B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F40F2ACA1A9829920037C30B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		F488551C1A958ACB002C66FE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -339,6 +400,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = send.please/Info.plist;
+				INFOPLIST_PREFIX_HEADER = InfoPlist.h;
+				INFOPLIST_PREPROCESS = YES;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -350,6 +413,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = send.please/Info.plist;
+				INFOPLIST_PREFIX_HEADER = InfoPlist.h;
+				INFOPLIST_PREPROCESS = YES;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -394,6 +459,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F40F2AC81A9829920037C30B /* Build configuration list for PBXAggregateTarget "GenGitVersion" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F40F2AC91A9829920037C30B /* Debug */,
+				F40F2ACA1A9829920037C30B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		F48854F91A958ACA002C66FE /* Build configuration list for PBXProject "send.please" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -410,6 +483,7 @@
 				F48855201A958ACB002C66FE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F48855211A958ACB002C66FE /* Build configuration list for PBXNativeTarget "send.pleaseTests" */ = {
 			isa = XCConfigurationList;
@@ -418,6 +492,7 @@
 				F48855231A958ACB002C66FE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
